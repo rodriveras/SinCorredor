@@ -17,11 +17,44 @@
             width: 1052px;
             height: 541px;
         }
+        .project-list-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 1000;
+            max-height: 50%;
+            overflow-y: auto;
+        }
+        .project-list-container h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+        .project-list-container ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .project-list-container li {
+            cursor: pointer;
+            padding: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        .project-list-container li:hover {
+            background-color: #f0f0f0;
+        }
         </style>
         <title>Proyectos 5 Tierras</title>
     </head>
     <body>
         <div id="map">
+        </div>
+        <div id="project-list-container">
+          <h3>Proyectos 5T</h3>
+          <ul id="project-list-ul"></ul>
         </div>
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
@@ -794,6 +827,45 @@
         map.on("layerremove", function(){
             resetLabels([layer_Copihue_1etapa_2,layer_Losencinos_3,layer_MonteleonII_4,layer_Ranchillo_5,layer_SanPedro_6,layer_Proyectos_5T_7,layer_Comunas_lin_9]);
         });
+        
+        // =====================================================================
+        // CÓDIGO AÑADIDO
+        // =====================================================================
+
+        // Espera a que la capa Proyectos_5T_7 se agregue al mapa
+        map.on('layeradd', function(e) {
+            if (e.layer === layer_Proyectos_5T_7) {
+                var projectList = document.getElementById('project-list-ul');
+
+                // Itera sobre las características de la capa para crear la lista
+                layer_Proyectos_5T_7.eachLayer(function(layer) {
+                    var feature = layer.feature;
+                    var projectName = feature.properties['Nombre'];
+                    if (projectName) {
+                        var listItem = document.createElement('li');
+                        listItem.textContent = projectName;
+                        
+                        // Vincula el evento de clic a cada elemento de la lista
+                        listItem.addEventListener('click', function() {
+                            // Obtiene los límites del elemento de la capa
+                            var bounds = layer.getBounds();
+                            // Ajusta el zoom del mapa a esos límites
+                            map.fitBounds(bounds, {
+                                padding: [50, 50] // Añade un padding para que no quede justo en el borde
+                            });
+                        });
+                        projectList.appendChild(listItem);
+                    }
+                });
+            }
+        });
+
+        // Asegura que la lista se cree si la capa ya estaba agregada
+        if (map.hasLayer(layer_Proyectos_5T_7)) {
+            var event = { layer: layer_Proyectos_5T_7 };
+            map.fireEvent('layeradd', event);
+        }
+
         </script>
     </body>
 </html>
