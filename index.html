@@ -516,6 +516,21 @@
                 return L.marker(latlng, style_Proyectos_5T_7_0(feature));
             },
         });
+        
+        // =====================================================================
+        // CÓDIGO CORREGIDO
+        // =====================================================================
+        
+        // Itera sobre cada marcador de la capa para agregar el evento de clic
+        layer_Proyectos_5T_7.eachLayer(function(layer) {
+            layer.on('click', function(e) {
+                // Obtiene las coordenadas del marcador
+                var latlng = e.target.getLatLng();
+                // Ajusta la vista del mapa para centrar y hacer zoom en el marcador
+                map.setView(latlng, 15); 
+            });
+        });
+
         bounds_group.addLayer(layer_Proyectos_5T_7);
         map.addLayer(layer_Proyectos_5T_7);
         function pop_Limite_reg_8(feature, layer) {
@@ -794,30 +809,6 @@
         map.on("layerremove", function(){
             resetLabels([layer_Copihue_1etapa_2,layer_Losencinos_3,layer_MonteleonII_4,layer_Ranchillo_5,layer_SanPedro_6,layer_Proyectos_5T_7,layer_Comunas_lin_9]);
         });
-        
-        // =====================================================================
-        // CÓDIGO AÑADIDO
-        // =====================================================================
-        
-        // Espera a que la capa Proyectos_5T_7 se agregue al mapa
-        map.on('layeradd', function(e) {
-            // Verifica que la capa que se ha añadido es la de Proyectos_5T
-            if (e.layer === layer_Proyectos_5T_7) {
-                // Itera sobre cada marcador de la capa
-                layer_Proyectos_5T_7.eachLayer(function(layer) {
-                    // Agrega un evento de clic a cada marcador
-                    layer.on('click', function(e) {
-                        // Obtiene los límites del marcador (punto)
-                        var bounds = e.target.getBounds();
-                        // Ajusta el zoom del mapa a esos límites
-                        map.fitBounds(bounds, {
-                            padding: [50, 50]
-                        });
-                    });
-                });
-            }
-        });
-        
         </script>
     </body>
 </html>
