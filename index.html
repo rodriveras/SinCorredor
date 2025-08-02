@@ -205,6 +205,7 @@
                 toggleIcon.textContent = '+';
             }
         });
+
         
         L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
         var bounds_group = new L.featureGroup([]);
@@ -642,4 +643,284 @@
                 map.setView(latlng, 15); 
             });
         });
-        bounds_group.addLayer(layer_Proyectos_5
+        bounds_group.addLayer(layer_Proyectos_5T_7);
+        map.addLayer(layer_Proyectos_5T_7);
+        function pop_Limite_reg_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM_REG'] !== null ? autolinker.link(String(feature.properties['NOM_REG']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM_PROV'] !== null ? autolinker.link(String(feature.properties['NOM_PROV']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_LENG'] !== null ? autolinker.link(String(feature.properties['SHAPE_LENG']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COD_REGI'] !== null ? autolinker.link(String(feature.properties['COD_REGI']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COD_PROV'] !== null ? autolinker.link(String(feature.properties['COD_PROV']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUPERFICIE'] !== null ? autolinker.link(String(feature.properties['SUPERFICIE']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['POBLAC'] !== null ? autolinker.link(String(feature.properties['POBLAC']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['POBLA2010'] !== null ? autolinker.link(String(feature.properties['POBLA2010']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_Le_1'] !== null ? autolinker.link(String(feature.properties['SHAPE_Le_1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHAPE_Area'] !== null ? autolinker.link(String(feature.properties['SHAPE_Area']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Limite_reg_8_0() {
+            return {
+                pane: 'pane_Limite_reg_8',
+                opacity: 1,
+                color: 'rgba(253,231,37,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_Limite_reg_8');
+        map.getPane('pane_Limite_reg_8').style.zIndex = 408;
+        map.getPane('pane_Limite_reg_8').style['mix-blend-mode'] = 'normal';
+        var layer_Limite_reg_8 = new L.geoJson(json_Limite_reg_8, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Limite_reg_8',
+            layerName: 'layer_Limite_reg_8',
+            pane: 'pane_Limite_reg_8',
+            onEachFeature: pop_Limite_reg_8,
+            style: style_Limite_reg_8_0,
+        });
+        bounds_group.addLayer(layer_Limite_reg_8);
+        map.addLayer(layer_Limite_reg_8);
+        function pop_Comunas_lin_9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['REGION'] !== null ? autolinker.link(String(feature.properties['REGION']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM_REGION'] !== null ? autolinker.link(String(feature.properties['NOM_REGION']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PROVINCIA'] !== null ? autolinker.link(String(feature.properties['PROVINCIA']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM_PROVIN'] !== null ? autolinker.link(String(feature.properties['NOM_PROVIN']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COMUNA'] !== null ? autolinker.link(String(feature.properties['COMUNA']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM_COMUNA'] !== null ? autolinker.link(String(feature.properties['NOM_COMUNA']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? autolinker.link(String(feature.properties['Shape_Leng']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? autolinker.link(String(feature.properties['Shape_Area']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Comunas_lin_9_0() {
+            return {
+                pane: 'pane_Comunas_lin_9',
+                opacity: 1,
+                color: 'rgba(203,203,203,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_Comunas_lin_9');
+        map.getPane('pane_Comunas_lin_9').style.zIndex = 409;
+        map.getPane('pane_Comunas_lin_9').style['mix-blend-mode'] = 'normal';
+        var layer_Comunas_lin_9 = new L.geoJson(json_Comunas_lin_9, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Comunas_lin_9',
+            layerName: 'layer_Comunas_lin_9',
+            pane: 'pane_Comunas_lin_9',
+            onEachFeature: pop_Comunas_lin_9,
+            style: style_Comunas_lin_9_0,
+        });
+        bounds_group.addLayer(layer_Comunas_lin_9);
+        map.addLayer(layer_Comunas_lin_9);
+        var overlaysTree = [
+            {label: '<img src="legend/Comunas_lin_9.png" /> Comunas_lin', layer: layer_Comunas_lin_9},
+            {label: '<img src="legend/Limite_reg_8.png" /> Limite_reg', layer: layer_Limite_reg_8},
+            {label: '<img src="legend/Proyectos_5T_7.png" /> Proyectos_5T', layer: layer_Proyectos_5T_7},
+            {label: '<img src="legend/SanPedro_6.png" /> San Pedro', layer: layer_SanPedro_6},
+            {label: '<img src="legend/Ranchillo_5.png" /> Ranchillo', layer: layer_Ranchillo_5},
+            {label: '<img src="legend/MonteleonII_4.png" /> Monteleon II', layer: layer_MonteleonII_4},
+            {label: '<img src="legend/Losencinos_3.png" /> Los encinos', layer: layer_Losencinos_3},
+            {label: '<img src="legend/Copihue_1etapa_2.png" /> Copihue_1etapa', layer: layer_Copihue_1etapa_2},
+            {label: "satelite", layer: layer_satelite_1},
+            {label: "OpenStreetMap", layer: layer_OpenStreetMap_0},]
+        var lay = L.control.layers.tree(null, overlaysTree,{
+            //namedToggle: true,
+            //selectorBack: false,
+            //closedSymbol: '&#8862; &#x1f5c0;',
+            //openedSymbol: '&#8863; &#x1f5c1;',
+            //collapseAll: 'Collapse all',
+            //expandAll: 'Expand all',
+            collapsed: true,
+        });
+        lay.addTo(map);
+        map.on("zoomend", function(){
+
+                if (map.hasLayer(layer_SanPedro_6)) {
+                    if (map.getZoom() <= 16 && map.getZoom() >= 19) {
+                        layer_SanPedro_6.eachLayer(function (layer) {
+                            layer.openTooltip();
+                        });
+                    } else {
+                        layer_SanPedro_6.eachLayer(function (layer) {
+                            layer.closeTooltip();
+                        });
+                    }
+                }
+        });
+        setBounds();
+        var i = 0;
+        layer_Copihue_1etapa_2.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['name'] !== null?String('<div style="color: #ffff33; font-size: 8pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['name']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Copihue_1etapa_2'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Losencinos_3.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['N Parcela'] !== null?String('<div style="color: #ffff33; font-size: 8pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['N Parcela']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Losencinos_3'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_MonteleonII_4.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['id'] !== null?String('<div style="color: #ffff33; font-size: 8pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['id']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_MonteleonII_4'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Ranchillo_5.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Parcela'] !== null?String('<div style="color: #ffff33; font-size: 8pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Parcela']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Ranchillo_5'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_SanPedro_6.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Parcela'] !== null?String('<div style="color: #ffff33; font-size: 8pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Parcela']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_SanPedro_6'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Proyectos_5T_7.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((exp_label_Proyectos_5T_7_eval_expression(context) !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + exp_label_Proyectos_5T_7_eval_expression(context)) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Proyectos_5T_7'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Comunas_lin_9.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['NOM_COMUNA'] !== null?String('<div style="color: #ffffff; font-size: 7pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['NOM_COMUNA']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Comunas_lin_9'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+                if (map.hasLayer(layer_SanPedro_6)) {
+                    if (map.getZoom() <= 16 && map.getZoom() >= 19) {
+                        layer_SanPedro_6.eachLayer(function (layer) {
+                            layer.openTooltip();
+                        });
+                    } else {
+                        layer_SanPedro_6.eachLayer(function (layer) {
+                            layer.closeTooltip();
+                        });
+                    }
+                }
+        resetLabels([layer_Copihue_1etapa_2,layer_Losencinos_3,layer_MonteleonII_4,layer_Ranchillo_5,layer_SanPedro_6,layer_Proyectos_5T_7,layer_Comunas_lin_9]);
+        map.on("zoomend", function(){
+            resetLabels([layer_Copihue_1etapa_2,layer_Losencinos_3,layer_MonteleonII_4,layer_Ranchillo_5,layer_SanPedro_6,layer_Proyectos_5T_7,layer_Comunas_lin_9]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_Copihue_1etapa_2,layer_Losencinos_3,layer_MonteleonII_4,layer_Ranchillo_5,layer_SanPedro_6,layer_Proyectos_5T_7,layer_Comunas_lin_9]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_Copihue_1etapa_2,layer_Losencinos_3,layer_MonteleonII_4,layer_Ranchillo_5,layer_SanPedro_6,layer_Proyectos_5T_7,layer_Comunas_lin_9]);
+        });
+        </script>
+    </body>
+</html>
