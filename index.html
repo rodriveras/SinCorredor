@@ -17,6 +17,16 @@
             width: 1052px;
             height: 541px;
         }
+        /* Estilo personalizado para el botón de zoom a la extensión completa */
+        .leaflet-control-custom a {
+            background-color: white;
+            cursor: pointer;
+            line-height: 26px;
+            width: 26px;
+            height: 26px;
+            text-align: center;
+            display: block;
+        }
         </style>
         <title>Proyectos 5 Tierras</title>
     </head>
@@ -44,9 +54,11 @@
         <script src="data/Limite_reg_8.js"></script>
         <script src="data/Comunas_lin_9.js"></script>
         <script>
+        // Define los límites iniciales del mapa en una variable
+        var initialBounds = [[-36.65921238537254,-72.33385368405676],[-36.03286409335324,-71.11369467362955]];
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[-36.65921238537254,-72.33385368405676],[-36.03286409335324,-71.11369467362955]]);
+        }).fitBounds(initialBounds);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -88,9 +100,24 @@
             this._div.innerHTML = '<h2>Proyectos 5 Tierras</h2>';
         };
         title.addTo(map);
+        
         var zoomControl = L.control.zoom({
             position: 'topleft'
         }).addTo(map);
+
+        // Nuevo control personalizado para el botón de zoom a la extensión completa
+        var homeControl = L.control({position: 'topleft'});
+        homeControl.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+            div.innerHTML = '<a href="#" title="Zoom a la extensión completa" role="button"><i class="fa fa-home"></i></a>';
+            
+            div.onclick = function() {
+                map.fitBounds(initialBounds);
+            }
+            return div;
+        };
+        homeControl.addTo(map);
+        
         L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
@@ -530,7 +557,6 @@
                 map.setView(latlng, 15); 
             });
         });
-
         bounds_group.addLayer(layer_Proyectos_5T_7);
         map.addLayer(layer_Proyectos_5T_7);
         function pop_Limite_reg_8(feature, layer) {
